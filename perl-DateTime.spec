@@ -10,7 +10,7 @@ Name:		perl-DateTime
 Version:	0.21
 Release:	1
 # same as perl
-License:	GPL or Artistic
+License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
 # Source0-md5:	2f6deb64ffea879ca29832dc08fe428b
