@@ -4,20 +4,23 @@
 #
 %include	/usr/lib/rpm/macros.perl
 %define	pdir	DateTime
-Summary:	DateTime
+Summary:	DateTime - representation of date/time combinations
+Summary(pl):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
 Version:	0.21
 Release:	1
-License:	(enter GPL/LGPL/BSD/BSD-like/Artistic/other license name here)
+# same as perl
+License:	GPL or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
 # Source0-md5:	2f6deb64ffea879ca29832dc08fe428b
-BuildRequires:	perl-devel >= 1:5.8.0
-BuildRequires:	rpm-perlprov >= 4.1-13
+URL:		http://datetime.perl.org/
+BuildRequires:	perl-Class-Factory
 BuildRequires:	perl-DateTime-Locale
 BuildRequires:	perl-DateTime-TimeZone
-BuildRequires:	perl-Class-Factory
 BuildRequires:	perl-Params-Validate
+BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -26,6 +29,13 @@ and is part of the Perl DateTime project. For details on this project
 please see <http://datetime.perl.org/>. The DateTime site has a FAQ
 which may help answer many "how do I do X?" questions. The FAQ is at
 <http://datetime.perl.org/faq.html>.
+
+%description -l pl
+DateTime to klasa do reprezentowania kombinacji daty i czasu, bêd±ca
+czê¶ci± perlowego projektu DateTime. Szczegó³y dotycz±ce tego projektu
+mo¿na znale¼æ pod adresem <http://datetime.perl.org/>. Serwis ten ma
+swoje FAQ, gdzie mo¿na znale¼æ odpowiedzi na wiele pytañ - dostêpne
+pod <http://datetime.perl.org/faq.html>.
 
 %prep
 %setup -q -n %{pdir}-%{version}
