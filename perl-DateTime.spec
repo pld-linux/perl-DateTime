@@ -1,29 +1,27 @@
 #
 # Conditional build:
-%bcond_with	tests	# do not perform "make test"
+%bcond_with	tests	# perform "make test"
 #
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	DateTime
 Summary:	DateTime - representation of date/time combinations
 Summary(pl):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	0.25
+Version:	0.28
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
-# Source0-md5:	8db1dba051b074db0845851de3896b95
+# Source0-md5:	8f746e163d0e430704cbe14c136ad743
 URL:		http://datetime.perl.org/
 %if %{with tests}
-BuildRequires:	perl-Class-Factory
-BuildRequires:	perl-DateTime-Locale
-BuildRequires:	perl-DateTime-TimeZone
-BuildRequires:	perl-Params-Validate
+BuildRequires:	perl-DateTime-Locale >= 0.21
+BuildRequires:	perl-DateTime-TimeZone >= 0.26
+BuildRequires:	perl-Params-Validate >= 0.76
 %endif
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
-Requires:	perl-DateTime-TimeZone
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
