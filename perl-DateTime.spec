@@ -8,7 +8,7 @@ Summary:	DateTime - representation of date/time combinations
 Summary(pl):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
 Version:	0.28
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -66,5 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorarch}/DateTime
 %{perl_vendorarch}/DateTime/*.pm
 %{perl_vendorarch}/auto/DateTime/DateTime.bs
+%dir %{perl_vendorarch}/auto/DateTime
 %attr(755,root,root) %{perl_vendorarch}/auto/DateTime/DateTime.so
 %{_mandir}/man3/*
