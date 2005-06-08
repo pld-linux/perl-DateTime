@@ -55,6 +55,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DateTime/Format
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,5 +68,6 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/DateTime/*.pm
 %{perl_vendorarch}/auto/DateTime/DateTime.bs
 %dir %{perl_vendorarch}/auto/DateTime
+%{perl_vendorlib}/DateTime
 %attr(755,root,root) %{perl_vendorarch}/auto/DateTime/DateTime.so
 %{_mandir}/man3/*
