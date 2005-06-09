@@ -22,6 +22,7 @@ BuildRequires:	perl-Params-Validate >= 0.76
 %endif
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+Requires:	perl-base >= 1:5.8.7-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -64,10 +65,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changes README CREDITS TODO leaptab.txt
 %{perl_vendorarch}/DateTime*pm
-%dir %{perl_vendorarch}/DateTime
 %{perl_vendorarch}/DateTime/*.pm
 %{perl_vendorarch}/auto/DateTime/DateTime.bs
 %dir %{perl_vendorarch}/auto/DateTime
-%{perl_vendorlib}/DateTime
+%{perl_vendorlib}/DateTime/*
 %attr(755,root,root) %{perl_vendorarch}/auto/DateTime/DateTime.so
 %{_mandir}/man3/*
