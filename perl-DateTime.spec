@@ -14,7 +14,7 @@ Epoch:		1
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
-# Source0-md5:	f96816e634700ae3c8bd849f97856861
+# Source0-md5:	6cc7208029b13bc8097ab2b77df070b1
 URL:		http://datetime.perl.org/
 %if %{with tests}
 BuildRequires:	perl-DateTime-Locale >= 0.21
