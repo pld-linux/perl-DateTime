@@ -8,7 +8,7 @@ Summary:	DateTime - representation of date/time combinations
 Summary(pl):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
 Version:	0.34
-Release:	1
+Release:	2
 Epoch:		1
 # same as perl
 License:	GPL v1+ or Artistic
@@ -17,6 +17,8 @@ Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
 # Source0-md5:	71285d93eba0f92e3285a9e011fc33e1
 URL:		http://datetime.perl.org/
 %if %{with tests}
+BuildRequires:	perl-DateTime-Format-ICal
+BuildRequires:	perl-DateTime-Format-Strptime >= 1.0400
 BuildRequires:	perl-DateTime-Locale >= 0.21
 BuildRequires:	perl-DateTime-TimeZone >= 1:0.38
 BuildRequires:	perl-Params-Validate >= 0.76
@@ -43,8 +45,6 @@ pod <http://datetime.perl.org/faq.html>.
 %prep
 %setup -q -n %{pdir}-%{version}
 
-mv t/20infinite.t{,.broken}
-
 %build
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
@@ -59,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DateTime/Format
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DateTime/{Event,Format}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -69,6 +69,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc Changes README CREDITS TODO leaptab.txt
 %{perl_vendorarch}/DateTime*pm
 %{perl_vendorarch}/DateTime/*.pm
+%dir %{perl_vendorlib}/DateTime/Event
 %{perl_vendorarch}/auto/DateTime/DateTime.bs
 %dir %{perl_vendorarch}/auto/DateTime
 %{perl_vendorlib}/DateTime/*
