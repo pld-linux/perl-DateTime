@@ -5,7 +5,7 @@
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	DateTime
 Summary:	DateTime - representation of date/time combinations
-Summary(pl):	DateTime - reprezentacja kombinacji daty i czasu
+Summary(pl.UTF-8):   DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
 Version:	0.34
 Release:	2
@@ -35,11 +35,11 @@ please see <http://datetime.perl.org/>. The DateTime site has a FAQ
 which may help answer many "how do I do X?" questions. The FAQ is at
 <http://datetime.perl.org/faq.html>.
 
-%description -l pl
-DateTime to klasa do reprezentowania kombinacji daty i czasu, bêd±ca
-czê¶ci± perlowego projektu DateTime. Szczegó³y dotycz±ce tego projektu
-mo¿na znale¼æ pod adresem <http://datetime.perl.org/>. Serwis ten ma
-swoje FAQ, gdzie mo¿na znale¼æ odpowiedzi na wiele pytañ - dostêpne
+%description -l pl.UTF-8
+DateTime to klasa do reprezentowania kombinacji daty i czasu, bÄ™dÄ…ca
+czÄ™Å›ciÄ… perlowego projektu DateTime. SzczegÃ³Å‚y dotyczÄ…ce tego projektu
+moÅ¼na znaleÅºÄ‡ pod adresem <http://datetime.perl.org/>. Serwis ten ma
+swoje FAQ, gdzie moÅ¼na znaleÅºÄ‡ odpowiedzi na wiele pytaÅ„ - dostÄ™pne
 pod <http://datetime.perl.org/faq.html>.
 
 %prep
