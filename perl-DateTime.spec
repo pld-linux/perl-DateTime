@@ -5,7 +5,7 @@
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	DateTime
 Summary:	DateTime - representation of date/time combinations
-Summary(pl.UTF-8):   DateTime - reprezentacja kombinacji daty i czasu
+Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
 Version:	0.34
 Release:	2
