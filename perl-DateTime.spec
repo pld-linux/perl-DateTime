@@ -8,7 +8,7 @@ Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
 Version:	0.42
-Release:	1
+Release:	2
 Epoch:		1
 # same as perl
 License:	GPL v1+ or Artistic
