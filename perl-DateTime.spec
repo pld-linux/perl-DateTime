@@ -7,19 +7,16 @@
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	0.42
-Release:	2
+Version:	0.4501
+Release:	1
 Epoch:		1
-# same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
-# Source0-md5:	2ea2baae817dd4d3d3cfd4a4457794dd
+# Source0-md5:	890270f12eb4eb07dc1ddf8b26794ffe
 URL:		http://datetime.perl.org/
 %if %{with tests}
-#BuildRequires:	perl-DateTime-Format-ICal	# circular dependencies are no-no
-#BuildRequires:	perl-DateTime-Format-Strptime >= 1.0400
-BuildRequires:	perl-DateTime-Locale >= 0.34
+BuildRequires:	perl-DateTime-Locale >= 0.41
 BuildRequires:	perl-DateTime-TimeZone >= 1:0.38
 BuildRequires:	perl-Params-Validate >= 0.76
 %endif
@@ -72,5 +69,6 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/*.pm
 %{perl_vendorarch}/DateTime/*.pm
 %dir %{perl_vendorarch}/auto/DateTime
+%{perl_vendorarch}/auto/DateTime/DateTime.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/DateTime/DateTime.so
 %{_mandir}/man3/*
