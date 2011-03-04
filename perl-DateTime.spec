@@ -7,21 +7,28 @@
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	0.50
-Release:	3
+Version:	0.66
+Release:	1
 Epoch:		2
-License:	GPL v1+ or Artistic
+License:	Artistic 2.0
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{version}.tar.gz
-# Source0-md5:	d7cf8bdbb3e55dda31f8bbea6cafad2f
+Source0:	http://www.cpan.org/modules/by-module/DateTime/DROLSKY/%{pdir}-%{version}.tar.gz
+# Source0-md5:	9399b5b430da65ac0b9056c0182a805b
 URL:		http://datetime.perl.org/
-%if %{with tests}
-BuildRequires:	perl-DateTime-Locale >= 0.41
-BuildRequires:	perl-DateTime-TimeZone >= 1:0.59
-BuildRequires:	perl-Params-Validate >= 0.76
-%endif
+BuildRequires:	perl(Pod::Man) >= 1.14
+BuildRequires:	perl-ExtUtils-CBuilder
+BuildRequires:	perl-Module-Build >= 0.3601
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+%if %{with tests}
+BuildRequires:	perl(Time::Local) >= 1.04
+BuildRequires:	perl-DateTime-Locale >= 0.41
+BuildRequires:	perl-DateTime-TimeZone >= 1:1.09
+BuildRequires:	perl-Params-Validate >= 0.76
+BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-Test-Simple >= 0.88
+%endif
 Requires:	perl-base >= 1:5.8.7-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,20 +50,23 @@ pod <http://datetime.perl.org/faq.html>.
 %setup -q -n %{pdir}-%{version}
 
 %build
-%{__perl} Makefile.PL \
-	INSTALLDIRS=vendor
+%{__perl} Build.PL \
+	installdirs=vendor \
+	--config cc="%{__cc}" \
+	--config ld="%{__cc}" \
+	--config optimize="%{rpmcflags}"
 
-%{__make} \
-	CC="%{__cc}" \
-	OPTIMIZE="%{rpmcflags}"
+./Build
 
-%{?with_tests:%{__make} test}
+%{?with_tests:./Build test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+./Build install \
+	destdir=$RPM_BUILD_ROOT
+
+# for noarch DateTime::* modules
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DateTime/{Event,Format}
 
 %clean
@@ -65,10 +75,13 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc Changes README CREDITS TODO leaptab.txt
-%{perl_vendorlib}/DateTime/*
-%{perl_vendorarch}/*.pm
+%dir %{perl_vendorlib}/DateTime/Event
+%dir %{perl_vendorlib}/DateTime/Format
+%{perl_vendorarch}/DateTime.pm
+%{perl_vendorarch}/DateTimePP.pm
+%{perl_vendorarch}/DateTimePPExtra.pm
 %{perl_vendorarch}/DateTime/*.pm
 %dir %{perl_vendorarch}/auto/DateTime
 %{perl_vendorarch}/auto/DateTime/DateTime.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/DateTime/DateTime.so
-%{_mandir}/man3/*
+%{_mandir}/man3/DateTime*.3pm*
