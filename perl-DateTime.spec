@@ -7,13 +7,13 @@
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	0.74
-Release:	2
+Version:	1.03
+Release:	1
 Epoch:		2
 License:	Artistic 2.0
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
-# Source0-md5:	0b848c90be99c81fcee161c864be6834
+# Source0-md5:	ea0fc830410b9ce3baeef3525bc0acdd
 URL:		http://datetime.perl.org/
 BuildRequires:	perl(Pod::Man) >= 1.14
 BuildRequires:	perl-ExtUtils-CBuilder
