@@ -18,7 +18,7 @@ URL:		http://datetime.perl.org/
 BuildRequires:	perl(Pod::Man) >= 1.14
 BuildRequires:	perl-ExtUtils-CBuilder
 BuildRequires:	perl-Module-Build >= 0.3601
-BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	perl-devel >= 1:5.8.1
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl(Time::Local) >= 1.04
