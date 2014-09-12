@@ -83,6 +83,5 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorarch}/DateTimePPExtra.pm
 %{perl_vendorarch}/DateTime/*.pm
 %dir %{perl_vendorarch}/auto/DateTime
-%{perl_vendorarch}/auto/DateTime/DateTime.bs
 %attr(755,root,root) %{perl_vendorarch}/auto/DateTime/DateTime.so
 %{_mandir}/man3/DateTime*.3pm*
