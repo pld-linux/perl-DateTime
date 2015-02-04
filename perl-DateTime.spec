@@ -7,13 +7,13 @@
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	1.03
-Release:	3
+Version:	1.18
+Release:	1
 Epoch:		2
 License:	Artistic 2.0
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
-# Source0-md5:	ea0fc830410b9ce3baeef3525bc0acdd
+# Source0-md5:	58160bea9744a7bc9d7737f7dad9fa72
 URL:		http://datetime.perl.org/
 BuildRequires:	perl(Pod::Man) >= 1.14
 BuildRequires:	perl-ExtUtils-CBuilder
@@ -24,7 +24,7 @@ BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	perl(Time::Local) >= 1.04
 BuildRequires:	perl-DateTime-Format-Strptime >= 1.2000
 BuildRequires:	perl-DateTime-Locale >= 0.41
-BuildRequires:	perl-DateTime-TimeZone >= 3:1.09
+BuildRequires:	perl-DateTime-TimeZone >= 3:1.74
 BuildRequires:	perl-Math-Round
 BuildRequires:	perl-Params-Validate >= 0.76
 BuildRequires:	perl-Test-Exception
@@ -67,6 +67,8 @@ rm -rf $RPM_BUILD_ROOT
 ./Build install \
 	destdir=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{perl_vendorarch}/auto/DateTime/DateTime.bs
+
 # for noarch DateTime::* modules
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DateTime/{Event,Format}
 
@@ -75,7 +77,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes README CREDITS TODO leaptab.txt
+%doc CREDITS Changes TODO leaptab.txt
 %dir %{perl_vendorlib}/DateTime/Event
 %dir %{perl_vendorlib}/DateTime/Format
 %{perl_vendorarch}/DateTime.pm
