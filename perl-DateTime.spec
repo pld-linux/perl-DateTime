@@ -7,13 +7,13 @@
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	1.18
-Release:	5
+Version:	1.39
+Release:	1
 Epoch:		2
 License:	Artistic 2.0
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
-# Source0-md5:	58160bea9744a7bc9d7737f7dad9fa72
+# Source0-md5:	4594f4e303fe3e7d80132bfc8a0a6009
 URL:		http://datetime.perl.org/
 BuildRequires:	perl(Pod::Man) >= 1.14
 BuildRequires:	perl-ExtUtils-CBuilder
@@ -22,13 +22,17 @@ BuildRequires:	perl-devel >= 1:5.8.1
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl(Time::Local) >= 1.04
+BuildRequires:	perl-DateTime-Format-Mail
 BuildRequires:	perl-DateTime-Format-Strptime >= 1.2000
 BuildRequires:	perl-DateTime-Locale >= 0.41
 BuildRequires:	perl-DateTime-TimeZone >= 3:1.74
 BuildRequires:	perl-Math-Round
 BuildRequires:	perl-Params-Validate >= 0.76
+BuildRequires:	perl-Params-ValidationCompiler
+BuildRequires:	perl-Specio
 BuildRequires:	perl-Test-Exception
 BuildRequires:	perl-Test-Simple >= 0.88
+BuildRequires:	perl-namespace-autoclean >= 0.19
 %endif
 Requires:	perl-base >= 1:5.8.7-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,23 +55,17 @@ pod <http://datetime.perl.org/faq.html>.
 %setup -q -n %{pdir}-%{version}
 
 %build
-%{__perl} Build.PL \
-	installdirs=vendor \
-	--config cc="%{__cc}" \
-	--config ld="%{__cc}" \
-	--config optimize="%{rpmcflags}"
+%{__perl} Makefile.PL \
+        INSTALLDIRS=vendor
+%{__make}
 
-./Build
-
-%{?with_tests:./Build test}
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-./Build install \
-	destdir=$RPM_BUILD_ROOT
-
-%{__rm} $RPM_BUILD_ROOT%{perl_vendorarch}/auto/DateTime/DateTime.bs
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 # for noarch DateTime::* modules
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/DateTime/{Event,Format}
@@ -81,8 +79,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorlib}/DateTime/Event
 %dir %{perl_vendorlib}/DateTime/Format
 %{perl_vendorarch}/DateTime.pm
-%{perl_vendorarch}/DateTimePP.pm
-%{perl_vendorarch}/DateTimePPExtra.pm
 %{perl_vendorarch}/DateTime/*.pm
 %dir %{perl_vendorarch}/auto/DateTime
 %attr(755,root,root) %{perl_vendorarch}/auto/DateTime/DateTime.so
