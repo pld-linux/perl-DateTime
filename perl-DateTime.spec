@@ -7,31 +7,35 @@
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	1.39
+Version:	1.41
 Release:	1
 Epoch:		2
-License:	Artistic 2.0
+License:	Artistic v2.0
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
-# Source0-md5:	4594f4e303fe3e7d80132bfc8a0a6009
+# Source0-md5:	43d9ead8984097f970496d4dafef266e
 URL:		http://datetime.perl.org/
 BuildRequires:	perl(Pod::Man) >= 1.14
+BuildRequires:	perl-Dist-CheckConflicts >= 0.02
 BuildRequires:	perl-ExtUtils-CBuilder
-BuildRequires:	perl-Module-Build >= 0.3601
-BuildRequires:	perl-devel >= 1:5.8.1
+BuildRequires:	perl-devel >= 1:5.8.4
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl(Time::Local) >= 1.04
+BuildRequires:	perl-CPAN-Meta-Check >= 0.011
+BuildRequires:	perl-CPAN-Meta-Requirements
 BuildRequires:	perl-DateTime-Format-Mail
 BuildRequires:	perl-DateTime-Format-Strptime >= 1.2000
-BuildRequires:	perl-DateTime-Locale >= 0.41
-BuildRequires:	perl-DateTime-TimeZone >= 3:1.74
+BuildRequires:	perl-DateTime-Locale >= 1.06
+BuildRequires:	perl-DateTime-TimeZone >= 3:2.02
 BuildRequires:	perl-Math-Round
-BuildRequires:	perl-Params-Validate >= 0.76
-BuildRequires:	perl-Params-ValidationCompiler
-BuildRequires:	perl-Specio
-BuildRequires:	perl-Test-Exception
-BuildRequires:	perl-Test-Simple >= 0.88
+BuildRequires:	perl-Params-ValidationCompiler >= 0.13
+BuildRequires:	perl-Scalar-List-Utils
+BuildRequires:	perl-Specio >= 0.18
+BuildRequires:	perl-Storable
+BuildRequires:	perl-Test-Fatal
+BuildRequires:	perl-Test-Simple >= 0.96
+BuildRequires:	perl-Test-Warnings >= 0.005
+BuildRequires:	perl-Try-Tiny
 BuildRequires:	perl-namespace-autoclean >= 0.19
 %endif
 Requires:	perl-base >= 1:5.8.7-3
