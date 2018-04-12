@@ -23,12 +23,12 @@ BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-CPAN-Meta-Check >= 0.011
 BuildRequires:	perl-CPAN-Meta-Requirements
-BuildRequires:	perl-DateTime-Format-Mail
+BuildRequires:	perl-DateTime-Format-Mail >= 0.402
 BuildRequires:	perl-DateTime-Format-Strptime >= 1.2000
 BuildRequires:	perl-DateTime-Locale >= 1.06
 BuildRequires:	perl-DateTime-TimeZone >= 3:2.02
 BuildRequires:	perl-Math-Round
-BuildRequires:	perl-Params-ValidationCompiler >= 0.13
+BuildRequires:	perl-Params-ValidationCompiler >= 0.26
 BuildRequires:	perl-Scalar-List-Utils
 BuildRequires:	perl-Specio >= 0.18
 BuildRequires:	perl-Storable
