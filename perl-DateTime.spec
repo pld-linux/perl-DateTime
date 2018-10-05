@@ -1,6 +1,7 @@
 #
 # Conditional build:
-%bcond_without	tests	# perform "make test"
+%bcond_without	tests		# perform "make test"
+%bcond_with	tests_i18n	# tests with localization (requires some DateTime::Locale language resources)
 
 %define		pdir	DateTime
 %include	/usr/lib/rpm/macros.perl
@@ -38,6 +39,9 @@ BuildRequires:	perl-Test-Warnings >= 0.005
 BuildRequires:	perl-Try-Tiny
 BuildRequires:	perl-namespace-autoclean >= 0.19
 %endif
+%if %{with tests_i18n} && "%(ls /usr/share/perl5/vendor_perl/auto/share/dist/DateTime-Locale/{de,en-US-POSIX,fr,it}.pl >/dev/null 2>&1 ; echo $?)" != "0"
+BuildRequires:	perl-DateTime-Locale(with_locales:de;en-US;fr;it)
+%endif
 Requires:	perl-base >= 1:5.8.7-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -57,6 +61,12 @@ pod <http://datetime.perl.org/faq.html>.
 
 %prep
 %setup -q -n %{pdir}-%{version}
+
+%if %{with tests} && %{without tests_i18n}
+%{__sed} -i -e "/^test_strftime_for_locale( '\(de\|it\)'/d" t/13strftime.t
+%{__sed} -i -e "/locale.*'de'/ s/'de'/'en-US'/" t/23storable.t
+%{__rm} t/14locale.t t/41cldr-format.t
+%endif
 
 %build
 %{__perl} Makefile.PL \
