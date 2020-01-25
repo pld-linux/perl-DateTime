@@ -4,7 +4,6 @@
 %bcond_with	tests_i18n	# tests with localization (requires some DateTime::Locale language resources)
 
 %define		pdir	DateTime
-%include	/usr/lib/rpm/macros.perl
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
