@@ -7,17 +7,16 @@
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	1.52
-Release:	2
+Version:	1.54
+Release:	1
 Epoch:		2
 License:	Artistic v2.0
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
-# Source0-md5:	f18d180e2d7e5110f75e7a20955588f3
+# Source0-md5:	5b90d9b26741da2627b8d002d8796f95
 URL:		https://metacpan.org/release/DateTime
 BuildRequires:	perl(Pod::Man) >= 1.14
 BuildRequires:	perl-Dist-CheckConflicts >= 0.02
-BuildRequires:	perl-ExtUtils-CBuilder
 BuildRequires:	perl-devel >= 1:5.8.4
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.745
@@ -27,7 +26,8 @@ BuildRequires:	perl-CPAN-Meta-Requirements
 BuildRequires:	perl-DateTime-Format-Mail >= 0.402
 BuildRequires:	perl-DateTime-Format-Strptime >= 1.2000
 BuildRequires:	perl-DateTime-Locale >= 1.06
-BuildRequires:	perl-DateTime-TimeZone >= 3:2.02
+BuildRequires:	perl-DateTime-TimeZone >= 3:2.44
+BuildRequires:	perl-JSON-PP >= 2.27300
 BuildRequires:	perl-Math-Round
 BuildRequires:	perl-Params-ValidationCompiler >= 0.26
 BuildRequires:	perl-Scalar-List-Utils
@@ -42,6 +42,7 @@ BuildRequires:	perl-namespace-autoclean >= 0.19
 %if %{with tests_i18n} && "%(ls /usr/share/perl5/vendor_perl/auto/share/dist/DateTime-Locale/{de,en-US-POSIX,fr,it}.pl >/dev/null 2>&1 ; echo $?)" != "0"
 BuildRequires:	perl-DateTime-Locale(with_locales:de;en-US;fr;it)
 %endif
+BuildConflicts:	perl-DateTime-Format-Mail <= 0.402
 Requires:	perl-base >= 1:5.8.7-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -90,10 +91,10 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CREDITS Changes TODO leaptab.txt
-%dir %{perl_vendorlib}/DateTime/Event
-%dir %{perl_vendorlib}/DateTime/Format
 %{perl_vendorarch}/DateTime.pm
 %{perl_vendorarch}/DateTime/*.pm
+%dir %{perl_vendorlib}/DateTime/Event
+%dir %{perl_vendorlib}/DateTime/Format
 %dir %{perl_vendorarch}/auto/DateTime
 %attr(755,root,root) %{perl_vendorarch}/auto/DateTime/DateTime.so
 %{_mandir}/man3/DateTime*.3pm*
