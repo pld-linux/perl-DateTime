@@ -36,6 +36,7 @@ BuildRequires:	perl-Storable
 BuildRequires:	perl-Test-Fatal
 BuildRequires:	perl-Test-Simple >= 0.96
 BuildRequires:	perl-Test-Warnings >= 0.005
+BuildRequires:	perl-Test-Without-Module
 BuildRequires:	perl-Try-Tiny
 BuildRequires:	perl-namespace-autoclean >= 0.19
 %endif
