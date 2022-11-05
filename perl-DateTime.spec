@@ -1,19 +1,19 @@
 #
 # Conditional build:
-%bcond_without	tests		# perform "make test"
+%bcond_without	tests		# unit tests
 %bcond_with	tests_i18n	# tests with localization (requires some DateTime::Locale language resources)
 
 %define		pdir	DateTime
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	1.58
-Release:	2
+Version:	1.59
+Release:	1
 Epoch:		2
 License:	Artistic v2.0
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
-# Source0-md5:	0696785dd1c783b72d080d2e32b3306d
+# Source0-md5:	d6d73ba9ff03e00c83610a995fadc481
 URL:		https://metacpan.org/release/DateTime
 BuildRequires:	perl(Pod::Man) >= 1.14
 BuildRequires:	perl-Dist-CheckConflicts >= 0.02
