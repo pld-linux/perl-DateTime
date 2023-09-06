@@ -12,9 +12,9 @@ Release:	2
 Epoch:		2
 License:	Artistic v2.0
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
+Source0:	https://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
 # Source0-md5:	d6d73ba9ff03e00c83610a995fadc481
-URL:		https://metacpan.org/release/DateTime
+URL:		https://metacpan.org/dist/DateTime
 BuildRequires:	perl(Pod::Man) >= 1.14
 BuildRequires:	perl-Dist-CheckConflicts >= 0.02
 BuildRequires:	perl-devel >= 1:5.8.4
