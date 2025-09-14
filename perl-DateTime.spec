@@ -7,16 +7,17 @@
 Summary:	DateTime - representation of date/time combinations
 Summary(pl.UTF-8):	DateTime - reprezentacja kombinacji daty i czasu
 Name:		perl-DateTime
-Version:	1.65
-Release:	2
+Version:	1.66
+Release:	1
 Epoch:		2
 License:	Artistic v2.0
 Group:		Development/Languages/Perl
 Source0:	https://www.cpan.org/modules/by-module/DateTime/%{pdir}-%{version}.tar.gz
-# Source0-md5:	6f60018500f8f20c5fd3d34495eae1eb
+# Source0-md5:	525b43ebad148a24783c971aa198559c
 URL:		https://metacpan.org/dist/DateTime
 BuildRequires:	perl(Pod::Man) >= 1.14
 BuildRequires:	perl-Dist-CheckConflicts >= 0.02
+BuildRequires:	perl-ExtUtils-MakeMaker
 BuildRequires:	perl-devel >= 1:5.8.4
 BuildRequires:	rpm-perlprov >= 4.1-13
 BuildRequires:	rpmbuild(macros) >= 1.745
@@ -28,11 +29,11 @@ BuildRequires:	perl-DateTime-Format-Strptime >= 1.2000
 BuildRequires:	perl-DateTime-Locale >= 1.06
 BuildRequires:	perl-DateTime-TimeZone >= 3:2.44
 BuildRequires:	perl-JSON-PP >= 2.27300
-BuildRequires:	perl-Math-Round
 BuildRequires:	perl-Params-ValidationCompiler >= 0.26
 BuildRequires:	perl-Scalar-List-Utils
-BuildRequires:	perl-Specio >= 0.18
+BuildRequires:	perl-Specio >= 0.50
 BuildRequires:	perl-Storable
+BuildRequires:	perl-Term-ANSIColor
 BuildRequires:	perl-Test-Fatal
 BuildRequires:	perl-Test-Simple >= 0.96
 BuildRequires:	perl-Test-Warnings >= 0.005
@@ -49,17 +50,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 DateTime is a class for the representation of date/time combinations,
-and is part of the Perl DateTime project. For details on this project
-please see <http://datetime.perl.org/>. The DateTime site has a FAQ
-which may help answer many "how do I do X?" questions. The FAQ is at
-<http://datetime.perl.org/faq.html>.
+and is part of the Perl DateTime project.
 
 %description -l pl.UTF-8
 DateTime to klasa do reprezentowania kombinacji daty i czasu, będąca
-częścią perlowego projektu DateTime. Szczegóły dotyczące tego projektu
-można znaleźć pod adresem <http://datetime.perl.org/>. Serwis ten ma
-swoje FAQ, gdzie można znaleźć odpowiedzi na wiele pytań - dostępne
-pod <http://datetime.perl.org/faq.html>.
+częścią perlowego projektu DateTime.
 
 %prep
 %setup -q -n %{pdir}-%{version}
